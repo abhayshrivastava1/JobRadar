@@ -1,0 +1,6 @@
+selenium
+chromedriver-py
+beautifulsoup4
+requests
+readability-lxml
+pandas
