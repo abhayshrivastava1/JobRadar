@@ -33,7 +33,7 @@ from channel_utils import get_messages_from_channel
 
 
 driver = launch_driver(
-    browser="chrome",  # ya "edge"
+    browser="chrome",  # or "edge"
     user_data_dir=r"D:\whatsapp-bot-profile",
     driver_path=r"C:\Users\Acer\AppData\Roaming\Python\Python312\site-packages\chromedriver_py\chromedriver_win64.exe"
 )
@@ -48,30 +48,6 @@ WebDriverWait(driver, 120).until(
 )
 print("✅ WhatsApp Web loaded.\n")
 
-
-
-    
-
-
-# for channel_code in CHANNEL_CODES:
-#     print(f"\n📡 Scraping WhatsApp Channel: {channel_code}")
-#     messages = get_messages_from_channel(driver, channel_code, MAX_MESSAGES)
-
-#     for msg in messages:
-#         combined_text = msg.lower()
-#         if any(keyword.lower() in combined_text for keyword in LOCATION_KEYWORDS):
-#             all_filtered.append((msg, "location-found"))
-#         else:
-#             all_manual.append((msg, "manual-check"))
-
-
-
-# for channel_url in CHANNEL_LINKS:
-#     print(f"\n📡 Scanning channel: {channel_url}")
-#     channel_msgs = get_messages_from_channel(driver, channel_url, MAX_MESSAGES)
-
-#     for msg in channel_msgs:
-#         all_filtered.append((msg, "no-status"))  # Or call classify_messages() if you want to label
 
 
 all_filtered, all_manual = scrape_groups(driver, GROUP_NAMES, WAIT_TIME, MAX_MESSAGES)
