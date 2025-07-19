@@ -139,7 +139,7 @@ def enrich_and_export(all_filtered, all_manual, LOCATION_KEYWORDS):
     print(f"🔍 Total messages scanned:     {len(filtered_data) + len(manual_data) + len(skipped_manual)}")
     print(f"✅ Filtered (auto):            {len(filtered_data)}")
     print(f"🟡 Manual (needs review):      {len(manual_data)}")
-    print(f"🚫 Skipped (missing data):     {len(skipped_manual)}")
+    # print(f"🚫 Skipped (missing data):     {len(skipped_manual)}")
 
 
     return filtered_filename, manual_filename
