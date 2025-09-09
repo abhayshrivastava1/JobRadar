@@ -18,5 +18,5 @@ def get_page_text(url):
             soup = BeautifulSoup(main_html, "html.parser")
             return soup.get_text(separator="\n", strip=True)
     except Exception as e:
-        print(f"⚠️ Error reading page: {url}\n{e}")
+        print(f" Error reading page: {url}\n{e}")
     return "N/A"

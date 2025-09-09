@@ -12,7 +12,7 @@ def scrape_groups(driver, group_names, wait_time, max_messages):
     all_manual = []
 
     for group_name in group_names:
-        print(f"📂 Opening group: {group_name}")
+        print(f" Opening group: {group_name}")
 
         try:
             # Wait for search bar
@@ -34,7 +34,7 @@ def scrape_groups(driver, group_names, wait_time, max_messages):
             print(f"❌ Group '{group_name}' not found or not clickable.")
             continue
 
-        # ✅ Get and classify messages
+        # Get and classify messages
         messages = get_messages_from_group(driver, wait_time, max_messages)
         filtered, manual = classify_messages(messages)
 

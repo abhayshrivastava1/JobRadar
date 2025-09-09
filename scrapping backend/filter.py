@@ -13,7 +13,7 @@ def contains_location(text):
     text = text.lower()
     matched = [loc for loc in LOCATION_KEYWORDS if loc.lower() in text]
     if matched:
-        print(f"🟢 Matched location(s): {matched}")
+        print(f" Matched location(s): {matched}")
     return bool(matched), matched
 
 
@@ -36,11 +36,11 @@ def page_contains_location(url, driver):
 
         found, matched_keywords = contains_location(page_text)
         if found:
-            print(f"📌 MATCH FOUND in page: {matched_keywords}")
+            print(f" MATCH FOUND in page: {matched_keywords}")
         return found, matched_keywords
 
     except Exception as e:
-        print(f"⚠️ Selenium Error for {url}:\n{e}")
+        print(f" Selenium Error for {url}:\n{e}")
         return False, []
 
 
@@ -48,7 +48,7 @@ def classify_messages(messages):
     filtered = []
     manual = []
 
-    # ✅ Initialize headless Chrome ONCE
+    #  Initialize headless Chrome ONCE
     chrome_options = Options()
     chrome_options.add_argument("--headless")
     chrome_options.add_argument("--no-sandbox")
@@ -57,25 +57,25 @@ def classify_messages(messages):
     driver = webdriver.Chrome(options=chrome_options)
 
     for msg in messages:
-        print(f"\n🔍 Checking message:\n{msg}")
+        print(f"\n Checking message:\n{msg}")
         found_in_msg, msg_keywords = contains_location(msg)
         if found_in_msg:
             filtered.append((msg, f"location-found-directly: {msg_keywords}"))
         else:
             link = extract_link(msg)
-            print(f"🔗 Extracted link: {link}")
+            print(f" Extracted link: {link}")
             if link:
                 found_in_link, link_keywords = page_contains_location(link, driver)
                 if found_in_link:
                     filtered.append((msg, f"location-found-in-link: {link_keywords}"))
                 else:
-                    print("🟡 No keyword found in message or link — adding to manual")
+                    print(" No keyword found in message or link — adding to manual")
                     manual.append((msg, "no-location"))
             else:
-                print("🟡 No link found — adding to manual")
+                print(" No link found — adding to manual")
                 manual.append((msg, "no-location"))
 
-    # ✅ Quit only once
+    #  Quit only once
     driver.quit()
     return filtered, manual
 
