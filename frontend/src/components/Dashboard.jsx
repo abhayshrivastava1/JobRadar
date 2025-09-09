@@ -87,7 +87,7 @@ export default function Dashboard() {
   return (
     <div className="p-6 max-w-7xl mx-auto space-y-8">
       <h1 className="text-3xl font-bold text-gray-900 mb-6">
-        📊 Jobs Dashboard
+         Jobs Dashboard
       </h1>
 
       {/* Tabs */}
@@ -100,7 +100,7 @@ export default function Dashboard() {
           }`}
           onClick={() => setActiveTab("filtered")}
         >
-          ✅ Filtered Jobs
+          Filtered Jobs
         </button>
         <button
           className={`px-5 py-2 rounded-lg font-semibold transition-colors duration-200 ${
@@ -110,7 +110,7 @@ export default function Dashboard() {
           }`}
           onClick={() => setActiveTab("manual")}
         >
-          🟡 Manual Review
+          Manual Review
         </button>
       </div>
 
@@ -118,7 +118,7 @@ export default function Dashboard() {
       {activeTab === "filtered" ? (
         <section className="space-y-4">
           <h2 className="text-xl font-semibold text-gray-800 mb-2">
-            ✅ Filtered Jobs
+            Filtered Jobs
           </h2>
           {renderTable(filtered, [
             "Company",
@@ -130,7 +130,7 @@ export default function Dashboard() {
       ) : (
         <section className="space-y-4">
           <h2 className="text-xl font-semibold text-gray-800 mb-2">
-            🟡 Manual Review Jobs
+            Manual Review Jobs
           </h2>
           {renderTable(manual, ["Company","Message", "Link"])}
         </section>
