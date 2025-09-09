@@ -38,34 +38,19 @@ driver = launch_driver(
     driver_path=r"C:\Users\Acer\AppData\Roaming\Python\Python312\site-packages\chromedriver_py\chromedriver_win64.exe"
 )
 
-# ✅ Load WhatsApp
-print("✅ Launching WhatsApp Web...")
+# Load WhatsApp
+print(" Launching WhatsApp Web")
 driver.get("https://web.whatsapp.com")
 
-print("🔓 Waiting for WhatsApp Web to load...")
+print(" Waiting for WhatsApp Web to load")
 WebDriverWait(driver, 120).until(
     EC.presence_of_element_located((By.XPATH, '//div[@contenteditable="true"][@data-tab="3"]'))
 )
-print("✅ WhatsApp Web loaded.\n")
+print(" WhatsApp Web loaded.\n")
 
 
 
 all_filtered, all_manual = scrape_groups(driver, GROUP_NAMES, WAIT_TIME, MAX_MESSAGES)
-
-
-# ✅ Step 2: Scrape WhatsApp Channels
-# for channel_url in CHANNEL_LINKS:
-#     print(f"\n📡 Scanning channel: {channel_url}")
-#     try:
-#         messages = get_messages_from_channel(driver, channel_url, MAX_MESSAGES)
-#         filtered, manual = classify_messages(messages)
-
-#         all_filtered.extend(filtered)
-#         all_manual.extend(manual)
-#     except Exception as e:
-#         print(f"❌ Failed to scrape {channel_url}: {e}")
-#         continue
-
 
 
 channel_filtered, channel_manual = scrape_channels(driver, CHANNEL_LINKS, MAX_MESSAGES)
@@ -76,5 +61,5 @@ all_manual.extend(channel_manual)
 # after scraping is complete:
 enrich_and_export(all_filtered, all_manual, LOCATION_KEYWORDS)
 
-print("\n✅ Done scanning all groups.")
+print("\n Done scanning all groups.")
 driver.quit()
