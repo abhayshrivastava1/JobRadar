@@ -23,13 +23,13 @@ def get_page_text(url):
             soup = BeautifulSoup(main_html, "html.parser")
             return soup.get_text(separator="\n", strip=True)
     except Exception as e:
-        print(f"⚠️ Error reading page: {url}\n{e}")
+        print(f" Error reading page: {url}\n{e}")
     return "N/A"
 
 
 def save_results(all_filtered):
     os.makedirs("output", exist_ok=True)
-    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    # timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
 
     filtered_data = []
     manual_data = []
@@ -53,11 +53,25 @@ def save_results(all_filtered):
     df_filtered = pd.DataFrame(filtered_data)
     df_manual = pd.DataFrame(manual_data)
 
-    filtered_filename = f"output/filtered_jobs_{timestamp}.csv"
-    manual_filename = f"output/manual_review_{timestamp}.csv"
+
+
+    # Current file (scrapping backend/exporter.py ya jo bhi run ho raha hai) ka parent folder
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+    # Project root (JobRadar)
+    PROJECT_ROOT = os.path.dirname(BASE_DIR)
+
+    # Local backend/output
+    OUTPUT_DIR = os.path.join(PROJECT_ROOT, "local backend", "output")
+    os.makedirs(OUTPUT_DIR, exist_ok=True)
+
+    filtered_filename = os.path.join(OUTPUT_DIR, "filtered_jobs.csv")
+    manual_filename = os.path.join(OUTPUT_DIR, "manual_review.csv")
+
+
 
     df_filtered.to_csv(filtered_filename, index=False, encoding="utf-8")
     df_manual.to_csv(manual_filename, index=False, encoding="utf-8")
 
-    print(f"✅ Filtered data saved to: {filtered_filename}")
-    print(f"🟡 Manual review data saved to: {manual_filename}")
+    print(f" Filtered data saved to: {filtered_filename}")
+    print(f" Manual review data saved to: {manual_filename}")
