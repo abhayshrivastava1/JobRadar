@@ -15,13 +15,13 @@ MAX_MESSAGES = 150  # Config file ya main script me set karo
 
 
 CHANNEL_LINKS = [
-    "https://web.whatsapp.com/accept?channel_invite_code=0029Va9mu8Z8PgsD51mVDT04",
-    # "https://web.whatsapp.com/accept?channel_invite_code=0029VaE3nf78F2p9mcieeX2D"
+    "https://web.whatsapp.com/accept?channel_invite_code=0029VaHlzBTKgsNobcviOA36",
+
 
 ]
 
 CHANNEL_CODES = [
 
-    
+    "0029VaHlzBTKgsNobcviOA36"
    
 ]
