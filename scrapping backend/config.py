@@ -21,7 +21,7 @@ CHANNEL_LINKS = [
 ]
 
 CHANNEL_CODES = [
-    "0029Va9mu8Z8PgsD51mVDT04",  
-    "0029VaE3nf78F2p9mcieeX2D",  
+
+    
    
 ]

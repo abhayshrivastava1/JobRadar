@@ -31,7 +31,7 @@ def scrape_groups(driver, group_names, wait_time, max_messages):
             group.click()
             time.sleep(2)
         except:
-            print(f"❌ Group '{group_name}' not found or not clickable.")
+            print(f"Group '{group_name}' not found or not clickable.")
             continue
 
         # Get and classify messages

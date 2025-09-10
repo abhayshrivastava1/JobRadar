@@ -29,7 +29,7 @@ def get_page_text(url):
 
 def save_results(all_filtered):
     os.makedirs("output", exist_ok=True)
-    # timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
 
     filtered_data = []
     manual_data = []
@@ -65,8 +65,10 @@ def save_results(all_filtered):
     OUTPUT_DIR = os.path.join(PROJECT_ROOT, "local backend", "output")
     os.makedirs(OUTPUT_DIR, exist_ok=True)
 
-    filtered_filename = os.path.join(OUTPUT_DIR, "filtered_jobs.csv")
-    manual_filename = os.path.join(OUTPUT_DIR, "manual_review.csv")
+    # filtered_filename = os.path.join(OUTPUT_DIR, "filtered_jobs.csv")
+    # manual_filename = os.path.join(OUTPUT_DIR, "manual_review.csv")
+    filtered_filename = os.path.join(OUTPUT_DIR, f"filtered_jobs_{timestamp}.csv")
+    manual_filename   = os.path.join(OUTPUT_DIR, f"manual_review_{timestamp}.csv")
 
 
 

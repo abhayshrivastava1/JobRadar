@@ -1,4 +1,3 @@
-# link_utils.py
 import re
 import requests
 from readability import Document

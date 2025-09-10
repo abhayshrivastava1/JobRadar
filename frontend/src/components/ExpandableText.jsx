@@ -16,12 +16,12 @@ export default function ExpandableText({ text }) {
   const preview = words.slice(0, 30).join(" ") + (isLong ? "..." : "");
 
   return (
-    <div>
+    <div className="max-w-md whitespace-normal break-words">
       <span>{expanded || !isLong ? cleanedText : preview}</span>
       {isLong && (
         <button
           onClick={() => setExpanded(!expanded)}
-          className="ml-2 text-blue-600 hover:underline text-xs"
+          className="ml-2 text-blue-600 hover:text-black text-xs"
         >
           {expanded ? "Read Less" : "Read More"}
         </button>

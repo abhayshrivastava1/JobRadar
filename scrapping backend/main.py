@@ -34,8 +34,7 @@ from channel_utils import get_messages_from_channel
 
 driver = launch_driver(
     browser="chrome",  # or "edge"
-    user_data_dir=r"D:\whatsapp-bot-profile",
-    driver_path=r"C:\Users\Acer\AppData\Roaming\Python\Python312\site-packages\chromedriver_py\chromedriver_win64.exe"
+    user_data_dir=r"D:\whatsapp-bot-profile",    
 )
 
 # Load WhatsApp
