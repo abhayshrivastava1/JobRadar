@@ -28,6 +28,7 @@ from group_scraper import scrape_groups
 from exporter import enrich_and_export
 from channel_scraper import scrape_channels
 from channel_utils import get_messages_from_channel
+from csv_to_sqlite import get_latest_csv, import_csv_to_sqlite, CSV_FOLDER, CSV_PREFIXES, DB_PATH
 
 
 
@@ -58,7 +59,11 @@ all_manual.extend(channel_manual)
 
 
 # after scraping is complete:
-enrich_and_export(all_filtered, all_manual, LOCATION_KEYWORDS)
+filtered_filename, manual_filename = enrich_and_export(all_filtered, all_manual, LOCATION_KEYWORDS)
+
+import_csv_to_sqlite(filtered_filename, DB_PATH)
+import_csv_to_sqlite(manual_filename, DB_PATH)
+
 
 print("\n Done scanning all groups.")
 driver.quit()

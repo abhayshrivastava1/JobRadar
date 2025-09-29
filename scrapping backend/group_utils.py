@@ -22,6 +22,16 @@ def get_messages_from_group(driver, wait_time, max_messages):
             if text:
                 collected_texts.add(text)
 
+        for el in message_elements:
+            text = el.text.strip()
+            # if text:  # Only non-empty messages
+            before_len = len(collected_texts)
+            collected_texts.add(text)
+            after_len = len(collected_texts)
+            if after_len > before_len:
+                print(f"New message added: '{text[:50]}...' | Total messages: {after_len}")
+
+
         # Step 2: Check if we reached the message limit
         if len(collected_texts) >= max_messages:
             break
@@ -39,10 +49,11 @@ def get_messages_from_group(driver, wait_time, max_messages):
 
         # Step 4: Stop if no new messages were added after scroll
         if len(collected_texts) == last_count:
-            print("🔚 No new messages loaded — stopping scroll.")
+            print("No new messages loaded — stopping scroll.")
             break
 
         last_count = len(collected_texts)
 
     print(f" Total messages collected from group: {len(collected_texts)}")
     return list(collected_texts)[-max_messages:]
+

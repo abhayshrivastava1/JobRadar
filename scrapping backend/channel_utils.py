@@ -74,7 +74,7 @@ def get_messages_from_channel(driver, channel_url, max_messages=30):
 
         #  5.4: Stop if no new messages were loaded
         if len(collected_texts) == last_count:
-            print("🔚 No new messages loaded — stopping scroll.")
+            print("No new messages loaded — stopping scroll.")
             break
 
         last_count = len(collected_texts)
